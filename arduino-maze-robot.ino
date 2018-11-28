@@ -85,7 +85,7 @@ void loop(){
 
   
 void set_motors(int motor1speed, int motor2speed){
-  if (180 - motor1speed > M1_maksimum_speed ) motor1speed = 180 - M1_maksimum_speed;  // if speed is negative, use 0 instrad
+  if (motor1speed > M1_maksimum_speed ) motor1speed = 180 - M1_maksimum_speed;  // if speed is negative, use 0 instrad
   if (motor2speed > M2_maksimum_speed ) motor2speed = M2_maksimum_speed;
   if ( motor1speed > 90) motor1speed = 90;   // avoid spinning backward
   if (motor2speed < 90) motor2speed = 90; 

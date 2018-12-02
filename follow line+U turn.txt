@@ -5,9 +5,9 @@ Servo motor1, motor2;
 const int motor1Pin = 10; //left
 const int motor2Pin = 12;
   
-#define KP 0.2 //experiment to determine this, start by something sm  all that just makes your bot follow the line at a slow speed
-#define KD 0.5 //experiment to determine this, slowly increase the speeds and adjust this value. ( Note: Kp < Kd) 
-#define M1_default_speed 180  //normal speed of the Motor1£¬ ²»¹»¿ì£¡£¡
+#define KP 0.2 //experiment to determine this,slowly increase the speeds and adjust this value.
+#define KD 0.5 //experiment to determine this. ( Note: Kp < Kd) 
+#define M1_default_speed 180  //normal speed of the Motor1
 #define M2_default_speed 180  //normal speed of the Motor2
 #define M1_maksimum_speed 180 //max. speed of the Motor1
 #define M2_maksimum_speed 180 //max. speed of the Motor2
@@ -36,22 +36,26 @@ int lastError = 0;
 int last_proportional = 0;
 int integral = 0;
   
+  
 // put the car at a dead end , it will make a u-turn and then follow line.
 void loop(){ 
-  // first put the car at a dead end, to see if it can make U-turn and then follow straight line
+  // first put the car at a dead end, and then it can make U-turn and then follow straight line
   for (int i=0; i<22500;i++){
     motor1.write(0);
     motor2.write(0);
   }
   set_motors(90, 90);
   delay(500);
+  
+  // follow line again, use a infinite loop instread of loop(), that's probably the problem
   while(1){
-  PID_linefollower(); // follow line again
+  PID_linefollower(); 
   } 
 }
 
 
 void PID_linefollower(){
+// put all of the line following code in a subfunction for convinience
   int position = qtrrc.readLine(sensorValues); 
  
   int error = -2500 + position;

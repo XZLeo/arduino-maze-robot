@@ -1,8 +1,8 @@
 # arduino-maze-robot
 Demonstration
 
-1. PID  
-  use reflectance sensors' values and position to calculate the adjustment to the motor speed, use differential instead of derivative
+1. PID
+  1. use reflectance sensors' values and position to calculate the adjustment to the motor speed, use differential instead of derivative
 2. landscape
   1. use reflectance sensor values to judge left, right, T;
   2. use ultrasound sensor to detec the distance to the wall to tell left with left&straight;
